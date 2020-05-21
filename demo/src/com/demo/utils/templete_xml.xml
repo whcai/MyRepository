@@ -1,0 +1,104 @@
+<OrderManifest>
+	<OrderInfo>
+		<Operation>0</Operation>
+		<OrdNo>UV612291605051</OrdNo>
+		<OrdDt>2017-01-04 10:06:18</OrdDt>
+		<HBLNo>LN300010195KR</HBLNo>
+		<MBLNo>98892528284</MBLNo>
+		<FlightNo>OZ970</FlightNo>
+		<ETD>2017-01-03</ETD>
+		<ETA>2017-01-04</ETA>
+		<DepPort>HKG</DepPort>
+		<ArrPort>ICN</ArrPort>
+		<AgentCode>HANSUVAN</AgentCode>
+		<EmsOfficeCd></EmsOfficeCd>
+		<EmsOfficeSeq></EmsOfficeSeq>
+		<EmsLinkDivCd></EmsLinkDivCd>
+		<EmsCustNo></EmsCustNo>
+		<EmsApprNo></EmsApprNo>
+		<EmsKpacketNo>LN300010195KR</EmsKpacketNo>
+		<EmsMailKindCd>112</EmsMailKindCd>
+		<EmsMailTypeCd>K</EmsMailTypeCd>
+		<EmsDetailDivCd>1</EmsDetailDivCd>
+		<InsuranceYN>N</InsuranceYN>
+		<InsuranceValue>0</InsuranceValue>
+		<ShipperName>HANSUVAN</ShipperName>
+		<ShipperAddress>HANEUL-GIL GANGSEO-GU KOREANAIR CARGO TERMINAL SEOUL
+			KOREA</ShipperAddress>
+		<ShipperAddressA>HANEUL-GIL GANGSEO-GU</ShipperAddressA>
+		<ShipperAddressB>KOREANAIR CARGO TERMINAL SEOUL KOREA
+		</ShipperAddressB>
+		<ShipperZip>22381</ShipperZip>
+		<ShipperCountryCode>KR</ShipperCountryCode>
+		<ShipperTel>82-2-2662-8851</ShipperTel>
+		<ShipperTelA>82</ShipperTelA>
+		<ShipperTelB>2</ShipperTelB>
+		<ShipperTelC>2662</ShipperTelC>
+		<ShipperTelD>8851</ShipperTelD>
+		<ShipperMobile></ShipperMobile>
+		<ShipperMobileA></ShipperMobileA>
+		<ShipperMobileB></ShipperMobileB>
+		<ShipperMobileC></ShipperMobileC>
+		<ShipperUrl></ShipperUrl>
+		<ShipperBusinessId></ShipperBusinessId>
+		<ShipperEmail></ShipperEmail>
+		<ConsigneeName>Jeannette Espinoza</ConsigneeName>
+		<ConsigneeAddress>9422 Goodbee St. Pico RiveraCA</ConsigneeAddress>
+		<ConsigneeState>CA</ConsigneeState>
+		<ConsigneePlace>Pico Rivera</ConsigneePlace>
+		<ConsigneeStreet></ConsigneeStreet>
+		<ConsigneeZipCode>90660</ConsigneeZipCode>
+		<ConsigneeCountryCode>US</ConsigneeCountryCode>
+		<ConsigneeCountryName>UNITED STATES</ConsigneeCountryName>
+		<ConsigneeTel>15626393265</ConsigneeTel>
+		<ConsigneeTelA></ConsigneeTelA>
+		<ConsigneeTelB></ConsigneeTelB>
+		<ConsigneeTelC></ConsigneeTelC>
+		<ConsigneeTelD></ConsigneeTelD>
+		<ConsigneeBusinessId></ConsigneeBusinessId>
+		<ConsigneeIdCardType></ConsigneeIdCardType>
+		<ConsigneeIdCardNo></ConsigneeIdCardNo>
+		<ConsigneeEmail></ConsigneeEmail>
+		<DestinationCountryCode></DestinationCountryCode>
+		<DestinationPortCode></DestinationPortCode>
+		<eTradeType></eTradeType>
+		<CustomsType></CustomsType>
+		<Url></Url>
+		<TotalQty>1</TotalQty>
+		<TotalWeight>503.0</TotalWeight>
+		<CurrencyCode>USD</CurrencyCode>
+		<AmountTotal>22.490000000000002</AmountTotal>
+		<DimWidth></DimWidth>
+		<DimLength></DimLength>
+		<DimHeight></DimHeight>
+		<Remark></Remark>
+		<DeliveryRequest></DeliveryRequest>
+		<DeliveryCenterCode>LAX</DeliveryCenterCode>
+	</OrderInfo>
+	<ItemInfo>
+		<ItemNm>Novelty Gadgets</ItemNm>
+		<ItemModelNm></ItemModelNm>
+		<ItemQty>2</ItemQty>
+		<ItemQtyUnit>CT</ItemQtyUnit>
+		<ItemGrossWeight>503.0</ItemGrossWeight>
+		<ItemNetWeight>503.0</ItemNetWeight>
+		<ItemWeightUnit>G</ItemWeightUnit>
+		<ItemCurrencyCode>USD</ItemCurrencyCode>
+		<ItemPrice>14.97</ItemPrice>
+		<ItemHsCode></ItemHsCode>
+		<ItemOrigin>CN</ItemOrigin>
+	</ItemInfo>
+	<ItemInfo>
+		<ItemNm>Novelty Gadgets</ItemNm>
+		<ItemModelNm></ItemModelNm>
+		<ItemQty>2</ItemQty>
+		<ItemQtyUnit>CT</ItemQtyUnit>
+		<ItemGrossWeight>503.0</ItemGrossWeight>
+		<ItemNetWeight>503.0</ItemNetWeight>
+		<ItemWeightUnit>G</ItemWeightUnit>
+		<ItemCurrencyCode>USD</ItemCurrencyCode>
+		<ItemPrice>7.52</ItemPrice>
+		<ItemHsCode></ItemHsCode>
+		<ItemOrigin>CN</ItemOrigin>
+	</ItemInfo>
+</OrderManifest>

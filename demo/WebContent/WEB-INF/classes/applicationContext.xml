@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 配置自动扫描的包，将service扫描到IOC容器当中 -->
+	<context:component-scan
+		base-package="com.demo.service"></context:component-scan>
+
+	<!-- 事务扫描 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<!-- 加载资源文件 -->
+	<context:property-placeholder
+		location="classpath*:db.properties" />
+
+	<!-- 配置数据源 -->
+	<bean id="pooledDataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName" value="${mysql.driverClass}" />
+		<property name="url" value="${mysql.url}" />
+		<property name="username" value="${mysql.user}" />
+		<property name="password" value="${mysql.password}" />
+	</bean>
+
+	<!-- 配置sqlSessionFactoryBean -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 配置数据源 -->
+		<property name="dataSource" ref="pooledDataSource" />
+		<!-- 配置全局mybatis配置文件 -->
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml"></property>
+		<!-- 配置mapper文件 -->
+		<property name="mapperLocations"
+			value="classpath*:com/demo/dao/mapper/*.xml" />
+
+	</bean>
+
+	<!-- 配置扫描器，将dao接口加入Ioc容器中 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.demo.dao" />
+		<property name="sqlSessionFactoryBeanName"
+			value="sqlSessionFactory"></property>
+	</bean>
+
+	<!-- 配置可执行批量sqlSession -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+		<constructor-arg name="executorType" value="BATCH" />
+	</bean>
+
+	<!-- 配置事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<constructor-arg ref="pooledDataSource" />
+	</bean>
+
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* *..*ServiceImp.*(..))" id="txPointcut" />
+		<!-- 将切入点表达式和事务通知关联起来 -->
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="txPointcut" />
+	</aop:config>
+
+	<!-- 配置事务通知 -->
+	<tx:advice id="txAdvice"
+		transaction-manager="transactionManager">
+		<!-- 配置事务属性 -->
+		<tx:attributes>
+			<!-- 查询方法：配置只读属性，让数据库知道这是一个查询操作，能够进行一定优化 -->
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="count*" read-only="true" />
+
+			<!-- 增删改方法：配置事务传播行为、回滚异常 -->
+			<!-- propagation属性： REQUIRED：默认值，表示当前方法必须工作在事务中，如果当前线程上没有已经开启的事务，则自己开新事务。如果已经有了，那么就使用这个已有的事务。 
+				顾虑：用别人的事务有可能“被”回滚。 REQUIRES_NEW：建议使用的值，表示不管当前线程上有没有事务，都要自己开事务，在自己的事务中运行。 
+				好处：不会受到其他事务回滚的影响。 -->
+			<!-- rollback-for属性：配置事务方法针对什么样的异常回滚 默认：运行时异常回滚 建议：编译时异常和运行时异常都回滚 -->
+			<tx:method name="save*" propagation="REQUIRES_NEW"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRES_NEW"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="remove*" propagation="REQUIRES_NEW"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="batch*" propagation="REQUIRES_NEW"
+				rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+</beans>
